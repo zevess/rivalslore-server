@@ -23,6 +23,17 @@
         "images",
         "files"
       ]
+    },
+    "season_stories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::season-story.season-story",
+      "mappedBy": "season"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
     }
   }
 }
