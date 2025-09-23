@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "location_stories",
+  "info": {
+    "singularName": "location-story",
+    "pluralName": "location-stories",
+    "displayName": "Location Story"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "richtext"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "location": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::location.location",
+      "inversedBy": "location_stories"
+    }
+  }
+}
