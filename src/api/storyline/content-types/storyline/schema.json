@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "storylines",
+  "info": {
+    "singularName": "storyline",
+    "pluralName": "storylines",
+    "displayName": "Storyline"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "text": {
+      "type": "richtext",
+      "required": true
+    },
+    "season": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::season.season",
+      "inversedBy": "storyline"
+    },
+    "titleRu": {
+      "type": "string"
+    },
+    "textRu": {
+      "type": "richtext"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    }
+  }
+}

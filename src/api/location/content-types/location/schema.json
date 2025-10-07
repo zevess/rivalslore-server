@@ -39,13 +39,22 @@
     },
     "location_stories": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::location-story.location-story",
-      "mappedBy": "location"
+      "mappedBy": "locations"
     },
     "slug": {
       "type": "uid",
       "targetField": "title"
+    },
+    "titleRu": {
+      "type": "string"
+    },
+    "descriptionRu": {
+      "type": "text"
+    },
+    "textRu": {
+      "type": "richtext"
     }
   }
 }

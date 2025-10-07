@@ -26,6 +26,12 @@
         "images",
         "files"
       ]
+    },
+    "titleRu": {
+      "type": "string"
+    },
+    "descriptionRu": {
+      "type": "text"
     }
   }
 }

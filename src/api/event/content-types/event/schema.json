@@ -31,6 +31,9 @@
       "relation": "manyToOne",
       "target": "api::season.season",
       "inversedBy": "events"
+    },
+    "titleRu": {
+      "type": "string"
     }
   }
 }

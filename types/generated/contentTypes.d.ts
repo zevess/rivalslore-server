@@ -463,7 +463,9 @@ export interface ApiEventStoryEventStory extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     text: Schema.Attribute.RichText;
+    textRu: Schema.Attribute.RichText;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+    titleRu: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -495,6 +497,7 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
     season: Schema.Attribute.Relation<'manyToOne', 'api::season.season'>;
     slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+    titleRu: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -558,7 +561,9 @@ export interface ApiHeroStoryHeroStory extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     text: Schema.Attribute.RichText & Schema.Attribute.Required;
+    textRu: Schema.Attribute.RichText;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+    titleRu: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -576,22 +581,26 @@ export interface ApiHeroHero extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    biography: Schema.Attribute.Text & Schema.Attribute.Required;
+    biographyRu: Schema.Attribute.Text;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    descriptionRu: Schema.Attribute.Text;
     hero_stories: Schema.Attribute.Relation<
       'oneToMany',
       'api::hero-story.hero-story'
     >;
-    introduction: Schema.Attribute.Text & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::hero.hero'> &
       Schema.Attribute.Private;
     logo: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.Required;
-    lore: Schema.Attribute.Text & Schema.Attribute.Required;
     name: Schema.Attribute.String & Schema.Attribute.Required;
+    nameRu: Schema.Attribute.String;
     nick: Schema.Attribute.String & Schema.Attribute.Required;
+    nickRu: Schema.Attribute.String;
     portrait: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.Required;
     portrait_card: Schema.Attribute.Media<'images' | 'files'> &
@@ -600,6 +609,7 @@ export interface ApiHeroHero extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     quote: Schema.Attribute.String;
+    quoteRu: Schema.Attribute.String;
     signature: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.Required;
     silhouette: Schema.Attribute.Media<'images' | 'files'> &
@@ -626,12 +636,14 @@ export interface ApiItemItem extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text & Schema.Attribute.Required;
+    descriptionRu: Schema.Attribute.Text;
     image: Schema.Attribute.Media<'images' | 'files'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::item.item'> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+    titleRu: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -660,10 +672,15 @@ export interface ApiLocationStoryLocationStory
       'api::location-story.location-story'
     > &
       Schema.Attribute.Private;
-    location: Schema.Attribute.Relation<'manyToOne', 'api::location.location'>;
+    locations: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::location.location'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     text: Schema.Attribute.RichText;
+    textRu: Schema.Attribute.RichText;
     title: Schema.Attribute.String;
+    titleRu: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -685,6 +702,7 @@ export interface ApiLocationLocation extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
+    descriptionRu: Schema.Attribute.Text;
     gallery: Schema.Attribute.Media<'images' | 'files', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -693,14 +711,16 @@ export interface ApiLocationLocation extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     location_stories: Schema.Attribute.Relation<
-      'oneToMany',
+      'manyToMany',
       'api::location-story.location-story'
     >;
     preview: Schema.Attribute.Media<'images' | 'files'>;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'title'>;
     text: Schema.Attribute.RichText;
+    textRu: Schema.Attribute.RichText;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+    titleRu: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -732,7 +752,9 @@ export interface ApiSeasonStorySeasonStory extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     season: Schema.Attribute.Relation<'manyToOne', 'api::season.season'>;
     text: Schema.Attribute.RichText & Schema.Attribute.Required;
+    textRu: Schema.Attribute.RichText;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+    titleRu: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -768,7 +790,45 @@ export interface ApiSeasonSeason extends Struct.CollectionTypeSchema {
       'api::season-story.season-story'
     >;
     slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
+    storyline: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::storyline.storyline'
+    >;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+    titleRu: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiStorylineStoryline extends Struct.CollectionTypeSchema {
+  collectionName: 'storylines';
+  info: {
+    displayName: 'Storyline';
+    pluralName: 'storylines';
+    singularName: 'storyline';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::storyline.storyline'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    season: Schema.Attribute.Relation<'oneToOne', 'api::season.season'>;
+    slug: Schema.Attribute.UID<'title'>;
+    text: Schema.Attribute.RichText & Schema.Attribute.Required;
+    textRu: Schema.Attribute.RichText;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    titleRu: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1296,6 +1356,7 @@ declare module '@strapi/strapi' {
       'api::location.location': ApiLocationLocation;
       'api::season-story.season-story': ApiSeasonStorySeasonStory;
       'api::season.season': ApiSeasonSeason;
+      'api::storyline.storyline': ApiStorylineStoryline;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

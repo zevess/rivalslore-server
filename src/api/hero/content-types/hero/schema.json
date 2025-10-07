@@ -24,11 +24,11 @@
       "targetField": "nick",
       "required": true
     },
-    "introduction": {
+    "description": {
       "type": "text",
-      "required": true
+      "required": false
     },
-    "lore": {
+    "biography": {
       "type": "text",
       "required": true
     },
@@ -94,6 +94,21 @@
         "images",
         "files"
       ]
+    },
+    "nickRu": {
+      "type": "string"
+    },
+    "nameRu": {
+      "type": "string"
+    },
+    "biographyRu": {
+      "type": "text"
+    },
+    "quoteRu": {
+      "type": "string"
+    },
+    "descriptionRu": {
+      "type": "text"
     }
   }
 }

@@ -33,6 +33,12 @@
         "images",
         "files"
       ]
+    },
+    "titleRu": {
+      "type": "string"
+    },
+    "textRu": {
+      "type": "richtext"
     }
   }
 }
